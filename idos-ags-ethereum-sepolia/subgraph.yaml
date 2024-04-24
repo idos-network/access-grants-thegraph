@@ -1,0 +1,29 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AccessGrants
+    network: sepolia
+    source:
+      address: "0x73de8f45c0dFDf59C56a93B483246AC113a1f922"
+      abi: AccessGrants
+      startBlock: 5294879
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - GrantAdded
+        - GrantDeleted
+      abis:
+        - name: AccessGrants
+          file: ./abis/AccessGrants.json
+      eventHandlers:
+        - event: GrantAdded(indexed address,indexed address,indexed string,uint256)
+          handler: handleGrantAdded
+        - event: GrantDeleted(indexed address,indexed address,indexed string,uint256)
+          handler: handleGrantDeleted
+      file: ./src/access-grants.ts

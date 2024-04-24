@@ -1,0 +1,21 @@
+type GrantAdded @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  grantee: Bytes! # address
+  dataId: String! # string
+  lockedUntil: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GrantDeleted @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  grantee: Bytes! # address
+  dataId: String! # string
+  lockedUntil: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
